@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import css from './ContactForm.module.css';
+import PropTypes from 'prop-types';
+import { FormBox, Label, Input, AddBtn } from './ContactForm.styled';
 
 export default function Form({ onSubmit }) {
   const [name, setName] = useState('');
@@ -32,24 +33,23 @@ export default function Form({ onSubmit }) {
   };
 
   return (
-    <form className={css.contact__form} onSubmit={handleSubmit}>
-      <label className={css.contact__label}>
+    <FormBox onSubmit={handleSubmit}>
+      <Label>
         Name
-        <input
-          className={css.contact__input}
+        <Input
           type="text"
           name="name"
           value={name}
           onChange={handleChange}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/u"
+          // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-      </label>
-      <label className={css.contact__label}>
+      </Label>
+      <Label>
         Phone
-        <input
-          className={css.contact__input}
+        <Input
           type="tel"
           name="number"
           value={number}
@@ -58,10 +58,12 @@ export default function Form({ onSubmit }) {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
-      </label>
-      <button className={css.contact__btn} type="submit">
-        Add Contact
-      </button>
-    </form>
+      </Label>
+      <AddBtn type="submit">Add Contact</AddBtn>
+    </FormBox>
   );
 }
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

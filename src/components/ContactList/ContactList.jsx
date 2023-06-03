@@ -1,11 +1,12 @@
 import { ContactItem } from 'components/ContactListItem/ContactListItem';
 import PropTypes from 'prop-types';
-import css from './Contactlist.module.css';
+import { List } from './ContactList.styled';
+
 export const ContactList = ({ contacts, onDeleteContact }) => {
   return (
-    <ul className={css.contact__list}>
+    <List>
       <ContactItem data={contacts} onDeleteContact={onDeleteContact} />
-    </ul>
+    </List>
   );
 };
 

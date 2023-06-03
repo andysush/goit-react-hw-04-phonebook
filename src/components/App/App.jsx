@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Section } from 'components/Section/Section';
-import Form from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './SearchForm/SearchForm';
+import Form from '../ContactForm/ContactForm';
+import { ContactList } from '../ContactList/ContactList';
+import { Filter } from '../SearchForm/SearchForm';
 import { nanoid } from 'nanoid';
+import { Container } from './App.styled';
 
 export default function App() {
   const [contacts, setContacts] = useState(
@@ -53,7 +54,7 @@ export default function App() {
   );
 
   return (
-    <div className="container">
+    <Container>
       <Section title="Phone Book">
         <Form onSubmit={formSubmitHandler}></Form>
       </Section>
@@ -61,6 +62,6 @@ export default function App() {
         <Filter value={filter} onChange={changeFilter} />
         <ContactList contacts={findContacts} onDeleteContact={deleteContact} />
       </Section>
-    </div>
+    </Container>
   );
 }

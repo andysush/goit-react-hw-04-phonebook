@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import css from './SearchForm.module.css';
+import { Label, Input } from './SearchForm.styled';
 
 export const Filter = ({ name, onChange }) => (
-  <label className={css.search__form}>
+  <Label>
     Find
-    <input
-      className={css.search__input}
-      type="text"
-      value={name}
-      onChange={onChange}
-    />
-  </label>
+    <Input type="text" value={name} onChange={onChange} />
+  </Label>
 );
 
 Filter.propTypes = {
